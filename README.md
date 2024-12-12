@@ -28,8 +28,8 @@ This project is a React-based e-commerce product page where users can view produ
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/ecommerce-product-page.git
-   cd ecommerce-product-page
+   git clone https://github.com/FM-Akib/frontend-task.git
+   cd frontend-task
    ```
 
 2. Install dependencies:
@@ -41,7 +41,7 @@ This project is a React-based e-commerce product page where users can view produ
 3. Start the development server:
 
    ```bash
-   npm start
+   npm run dev
    ```
 
    The app will be available at `https://frontend-task-19f1d.web.app/`.
