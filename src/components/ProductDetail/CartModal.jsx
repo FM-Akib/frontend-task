@@ -6,15 +6,20 @@ const CartModal = ({ cart, cartTotal, cartQuantity, setIsCartOpen }) => {
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold">Your Cart</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-[#8091A7]">
-            <p>Item</p>    
-            <div className="hidden sm:flex pe-4 justify-between">
-              <p>Colour</p>    
-              <p>Size</p>    
-              <p>Qnt</p>    
-              <p>Price</p>
-            </div>    
-          </div>
+          {
+            cart.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-[#8091A7]">
+              <p>Item</p>    
+              <div className="hidden sm:flex pe-4 justify-between">
+                <p>Colour</p>    
+                <p>Size</p>    
+                <p>Qnt</p>    
+                <p>Price</p>
+              </div>    
+            </div>
+            )
+          }
+
           {cart?.map((item) => (
             <div key={item.id} className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t py-2  items-center">
               <div className="flex items-center gap-4">
@@ -71,7 +76,15 @@ const CartModal = ({ cart, cartTotal, cartQuantity, setIsCartOpen }) => {
               </div>
             </div>
           ) : (
+            <>
             <p className="text-center py-4">Your cart is empty</p>
+            <button
+            className=" px-4 py-2 border text-gray-800 rounded hover:bg-gray-300 transition-colors"
+            onClick={() => setIsCartOpen(false)}
+          >
+            Continue Shopping
+          </button>
+          </>
           )}
         </div>
       </div>

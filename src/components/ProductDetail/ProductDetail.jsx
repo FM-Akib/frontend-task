@@ -70,15 +70,11 @@ export default function ProductDetail() {
     setIsCartOpen(true);
   };
 
-
-
-
-
   const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
   const cartQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <section className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <card className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="w-full max-w-md mx-auto">
           <img
@@ -181,7 +177,8 @@ export default function ProductDetail() {
               </button>
             </div>
             <button 
-              onClick={addToCart}
+              onClick={
+                quantity > 0 ? addToCart : () => alert('Please set quantity')}
               className="w-full sm:w-auto bg-blue-500 font-semibold text-white py-2 px-4 rounded-sm hover:bg-blue-600 transition-colors"
             >
               Add to Cart
@@ -195,16 +192,15 @@ export default function ProductDetail() {
         </div>
       </card>
 
-      <div className="pt-10 flex items-center justify-center">
+      <div className="pt-5 md:pt-10 flex items-center justify-center">
         <button onClick={() => setIsCartOpen(true)} className='rounded-[20px] bg-[#FFBB5A] shadow-[0px_0px_15px_5px_rgba(0,_0,_0,_0.10)] py-2 px-6 font-semibold  '>
             Checkout <span className='bg-white px-[5px] py-[3px] rounded-md ml-2'>2</span> </button>
-
       </div>
 
       {isCartOpen && (
         <CartModal cart={cart} cartTotal={cartTotal} cartQuantity={cartQuantity} setIsCartOpen={setIsCartOpen} />
       )}
-    </div>
+    </section>
   );
 }
 
