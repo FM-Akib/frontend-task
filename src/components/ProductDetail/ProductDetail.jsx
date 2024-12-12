@@ -4,6 +4,7 @@ import blue from '../../assets/blue.png';
 import black from '../../assets/black.png';
 import cyan from '../../assets/cyan.png';
 import CartModal from './CartModal';
+import Ratings from './Ratings';
 
 const product = {
   name: "Classy Modern Smart watch",
@@ -87,14 +88,7 @@ export default function ProductDetail() {
         <div className="space-y-3 flex flex-col justify-center">
           <div>
             <h1 className="text-3xl font-bold">{product.name}</h1>
-            <div className="flex items-center gap-1 mt-1">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className={`text-2xl ${i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-300'}`}>
-                  ★
-                </span>
-              ))}
-              <span className="text-gray-600">({product.reviews} Reviews)</span>
-            </div>
+            <Ratings rating={product.rating} reviews={product.reviews} />
           </div>
 
           <div className="flex items-baseline gap-4">
@@ -105,11 +99,11 @@ export default function ProductDetail() {
           <p className="text-[#8091A7] ">{product.description}</p>
 
           <div className="flex gap-6">
-            <div className="">
+            <div>
                 <p className="text-[#8091A7] text-sm">Type</p>
                 <h3 className="font-bold mb-2 text-[#364A63] text-base">Watch</h3>
             </div>
-            <div className="">
+            <div>
                 <p className="text-[#8091A7] text-sm">Model Number</p>
                 <h3 className="font-bold mb-2 text-[#364A63] text-base">Forerunner 290XT</h3>
             </div>
@@ -194,7 +188,7 @@ export default function ProductDetail() {
 
       <div className="pt-5 md:pt-10 flex items-center justify-center">
         <button onClick={() => setIsCartOpen(true)} className='rounded-[20px] bg-[#FFBB5A] shadow-[0px_0px_15px_5px_rgba(0,_0,_0,_0.10)] py-2 px-6 font-semibold  '>
-            Checkout <span className='bg-white px-[5px] py-[3px] rounded-md ml-2'>2</span> </button>
+            Checkout <span className='bg-white px-[5px] py-[3px] rounded-md ml-2'>{cartQuantity}</span> </button>
       </div>
 
       {isCartOpen && (
